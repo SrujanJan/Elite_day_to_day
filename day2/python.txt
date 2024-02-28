@@ -1,0 +1,27 @@
+l,m = input().split()
+# n = int(input())
+
+
+n=int(m)
+s = []
+
+s.append((l[0], 1))
+
+for i in range(1, len(l)):
+    if len(s) != 0:
+        k = s[-1][0]
+        if k != l[i]:
+            s.append((l[i], 1))
+        elif k == l[i]:
+            freq = s[-1][1] + 1
+            s.append((k, freq))
+            if freq == n:
+                t = n
+                while t > 0:
+                    s.pop()
+                    t -= 1
+    elif len(s) == 0 and i < len(l):
+        s.append((l[i], 1))
+
+v = ''.join([char[0] for char in s])
+print(v)
